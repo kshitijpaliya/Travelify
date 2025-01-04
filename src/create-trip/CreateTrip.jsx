@@ -147,19 +147,22 @@ function CreateTrip() {
   };
 
   return (
-    <div>
-      <div className="flex flex-col justify-center items-start sm:px-10 md:px-32 lg:px-56 xl:px-72 mt-10 gap-10 h-100vh">
+    <div className="min-h-screen flex flex-col items-center px-5">
+      <div className="flex flex-col justify-center items-start sm:px-5 md:px-10 lg:px-32 xl:px-56 mt-10 gap-10">
+        {/* Header Section */}
         <div>
-          <h2 className="text-3xl font-bold pb-3">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold pb-3">
             Tell Us Your Travel Preferences 🏕️🌴
           </h2>
-          <p className="text-xl text-gray-500">
+          <p className="text-base sm:text-lg md:text-xl text-gray-500">
             Just provide some basic information, and our trip planner will
             generate a customized itinerary based on your preferences.
           </p>
         </div>
+
+        {/* Travel Destination */}
         <div className="w-full">
-          <h2 className="text-xl font-medium pb-3">
+          <h2 className="text-base sm:text-xl md:text-xl font-bold pb-3">
             Where are you planning to travel?🌍
           </h2>
           <GooglePlacesAutocomplete
@@ -173,23 +176,25 @@ function CreateTrip() {
               styles: {
                 container: (provided) => ({
                   ...provided,
-                  width: "100%", // Match the parent div
+                  width: "100%",
                 }),
                 control: (provided) => ({
                   ...provided,
-                  width: "100%", // Control input width
+                  width: "100%",
                 }),
                 menuList: (provided) => ({
                   ...provided,
                   width: "100%",
-                  overflowY: "hidden", // Hide the scrollbar
+                  overflowY: "hidden",
                 }),
               },
             }}
           />
         </div>
+
+        {/* Number of Days */}
         <div className="w-full">
-          <h2 className="text-xl font-medium pb-3">
+          <h2 className="text-base sm:text-xl md:text-xl font-bold pb-3">
             For how many days are you planning your trip?✈️
           </h2>
           <Input
@@ -197,17 +202,19 @@ function CreateTrip() {
             type="number"
             min="0"
             max="20"
-            className="no-spinner"
+            className="no-spinner w-full"
             onChange={(e) => {
               handleInputChange("noOfDays", e.target.value);
             }}
           />
         </div>
+
+        {/* Budget */}
         <div className="w-full">
-          <h2 className="text-xl font-medium pb-3">
+          <h2 className="text-base sm:text-xl md:text-xl font-bold pb-3">
             What is your budget for the trip?💰
           </h2>
-          <div className="grid grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             {SelectBudgetList.map((item, index) => (
               <div
                 key={index}
@@ -217,18 +224,22 @@ function CreateTrip() {
                   `shadow-lg border-black border-2`
                 }`}
               >
-                <h2 className="text-4xl">{item.icon}</h2>
-                <h2 className="font-bold">{item.title}</h2>
-                <h2 className="text-gray-500">{item.desc}</h2>
+                <h2 className="text-2xl md:text-4xl">{item.icon}</h2>
+                <h2 className="font-bold text-base md:text-lg">{item.title}</h2>
+                <h2 className="text-sm md:text-base text-gray-500">
+                  {item.desc}
+                </h2>
               </div>
             ))}
           </div>
         </div>
+
+        {/* Travel Companions */}
         <div className="w-full">
-          <h2 className="text-xl font-medium pb-3">
-            Who do you plan on traveling with on your next adveture?👨‍👩‍👧‍👦
+          <h2 className="text-lg sm:text-xl md:text-xl font-medium pb-3">
+            Who do you plan on traveling with on your next adventure?👨‍👩‍👧‍👦
           </h2>
-          <div className="grid grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             {SelectTravelsList.map((item, index) => (
               <div
                 key={index}
@@ -238,13 +249,17 @@ function CreateTrip() {
                   `shadow-lg border-black border-2`
                 }`}
               >
-                <h2 className="text-4xl">{item.icon}</h2>
-                <h2 className="font-bold">{item.title}</h2>
-                <h2 className="text-gray-500">{item.desc}</h2>
+                <h2 className="text-2xl md:text-4xl">{item.icon}</h2>
+                <h2 className="font-bold text-base md:text-lg">{item.title}</h2>
+                <h2 className="text-sm md:text-base text-gray-500">
+                  {item.desc}
+                </h2>
               </div>
             ))}
           </div>
         </div>
+
+        {/* Generate Trip Button */}
         <div className="flex justify-center w-full pb-10">
           <Button onClick={OnGenerateTrip} disabled={loading}>
             {loading ? (
@@ -254,12 +269,18 @@ function CreateTrip() {
             )}
           </Button>
         </div>
+
+        {/* Dialog */}
         <div>
           <Dialog open={openDailog} onOpenChange={setOpenDailog}>
             <DialogContent>
               <DialogHeader>
                 <DialogDescription>
-                  <img className="max-w-68" src={image} />
+                  <img
+                    className="max-w-full mx-auto"
+                    src={image}
+                    alt="Google Sign-In"
+                  />
                   <h2 className="font-bold text-lg mt-7 text-center">
                     Sign In With Google
                   </h2>

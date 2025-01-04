@@ -32,39 +32,44 @@ function InfoSection({ trip }) {
   };
 
   return (
-    <div className="-mt-3">
+    <div className="mt-5">
       {/* Container for the image */}
-      <div className="relative w-full h-64 md:h-80 lg:h-[400px] overflow-hidden rounded-xl">
+      <div className="relative w-full h-64 md:h-80 lg:h-[400px] overflow-hidden rounded-2xl shadow-lg">
         <img
           src={photoURL}
           alt="Trip location"
-          className="absolute inset-0 w-full h-full object-cover rounded-xl"
+          className="absolute inset-0 w-full h-full object-cover rounded-2xl"
         />
+        {/* Overlay for subtle gradient effect */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent rounded-2xl"></div>
       </div>
 
       {/* Trip details */}
-      <div className="my-5 flex justify-between gap-3">
+      <div className="my-8 flex flex-wrap justify-between items-center gap-5">
         {/* Location Name */}
-        <h2 className="font-bold text-2xl text-orange-600">
-          {trip?.userSelection?.location?.label}
+        <h2 className="font-bold text-2xl sm:text-3xl md:text-4xl text-orange-600">
+          {trip?.userSelection?.location?.label || "Beautiful Destination"}
         </h2>
 
         {/* Details */}
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           {/* Number of Days */}
-          <h2 className="p-2 px-4 bg-orange-200 rounded-3xl text-sm lg:text-md">
-            📅 {trip?.userSelection?.noOfDays} Days
-          </h2>
+          <div className="flex items-center gap-2 p-2 px-4 bg-orange-100 rounded-full shadow hover:shadow-md transition-all text-sm lg:text-md">
+            <span className="text-orange-500">📅</span>
+            <span>{trip?.userSelection?.noOfDays || "N/A"} Days</span>
+          </div>
 
           {/* Budget */}
-          <h2 className="p-2 px-4 bg-orange-200 rounded-3xl text-sm lg:text-md">
-            💰 {trip?.userSelection?.budget} Budget
-          </h2>
+          <div className="flex items-center gap-2 p-2 px-4 bg-orange-100 rounded-full shadow hover:shadow-md transition-all text-sm lg:text-md">
+            <span className="text-orange-500">💰</span>
+            <span>{trip?.userSelection?.budget || "N/A"} Budget</span>
+          </div>
 
           {/* Number of Travellers */}
-          <h2 className="p-2 px-4 bg-orange-200 rounded-3xl text-sm lg:text-md">
-            🥂 Travellers: {trip?.userSelection?.traveller}
-          </h2>
+          <div className="flex items-center gap-2 p-2 px-4 bg-orange-100 rounded-full shadow hover:shadow-md transition-all text-sm lg:text-md">
+            <span className="text-orange-500">🥂</span>
+            <span>Travellers: {trip?.userSelection?.traveller || "N/A"}</span>
+          </div>
         </div>
       </div>
     </div>

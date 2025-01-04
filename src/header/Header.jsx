@@ -65,24 +65,30 @@ function Header() {
 
   return (
     <Fragment>
-      <div className="flex w-full justify-between items-center px-5">
+      <div className="flex w-full justify-between items-center px-4 sm:px-5">
         {/* Logo */}
-        <img src={image} className="max-w-[15rem]" alt="Logo" />
+        <a href="/">
+          <img
+            src={image}
+            className="max-w-[10rem] sm:max-w-[12rem] md:max-w-[15rem]"
+            alt="Logo"
+          />
+        </a>
 
         {/* Content Container */}
-        <div className="flex-grow flex justify-end items-center gap-5">
+        <div className="flex-grow flex justify-end items-center gap-3 sm:gap-4 md:gap-5">
           {user ? (
             <div className="flex gap-3 items-center">
-              <a href="/my-trips">
+              {/* <a href="/my-trips">
                 <Button
                   variant="secondary"
-                  className="bg-gray-300 rounded-full hover:border-gray-200 hover:bg-orange-500 "
+                  className="px-3 py-2 text-sm sm:px-4 sm:py-2 sm:text-base bg-gray-300 rounded-full hover:border-gray-200 hover:bg-orange-500"
                 >
                   My Trips
                 </Button>
-              </a>
-              <Popover className="rounded-full">
-                <PopoverTrigger className="bg-transparent hover:border-transparent p-0 h-[50px] w-[50px] rounded-full">
+              </a> */}
+              <Popover>
+                <PopoverTrigger className="bg-transparent p-0 h-[40px] w-[40px] sm:h-[50px] sm:w-[50px] rounded-full">
                   {user?.picture && (
                     <img
                       src={user.picture}
@@ -111,37 +117,39 @@ function Header() {
         </div>
 
         {/* Sign In Dialog */}
-        <div>
-          <Dialog open={openDailog} onOpenChange={setOpenDailog}>
-            <DialogContent>
-              <DialogHeader>
-                <DialogDescription>
-                  <img className="max-w-68" src={image} />
-                  <h2 className="font-bold text-lg mt-7 text-center">
-                    Sign In With Google
-                  </h2>
-                  <p className="text-center">
-                    Sign In To The App With Google Authentication Securely
-                  </p>
-                  <Button
-                    onClick={login}
-                    className="w-full mt-5 flex items-center gap-4"
-                  >
-                    <FcGoogle />
-                    Sign In With Google
-                  </Button>
-                </DialogDescription>
-              </DialogHeader>
-              <DialogFooter className="sm:justify-center">
-                <DialogClose asChild>
-                  <Button type="button" variant="secondary">
-                    Close
-                  </Button>
-                </DialogClose>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
-        </div>
+        <Dialog open={openDailog} onOpenChange={setOpenDailog}>
+          <DialogContent className="max-w-[90%] sm:max-w-[400px] mx-auto">
+            <DialogHeader>
+              <DialogDescription>
+                <img className="max-w-[12rem] sm:max-w-[15rem]" src={image} />
+                <h2 className="font-bold text-base sm:text-lg mt-7 text-center">
+                  Sign In With Google
+                </h2>
+                <p className="text-center text-sm sm:text-base">
+                  Sign In To The App With Google Authentication Securely
+                </p>
+                <Button
+                  onClick={login}
+                  className="w-full mt-5 flex items-center gap-2 sm:gap-4 text-sm sm:text-base"
+                >
+                  <FcGoogle />
+                  Sign In With Google
+                </Button>
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter className="sm:justify-center">
+              <DialogClose asChild>
+                <Button
+                  type="button"
+                  variant="secondary"
+                  className="text-sm sm:text-base"
+                >
+                  Close
+                </Button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
     </Fragment>
   );

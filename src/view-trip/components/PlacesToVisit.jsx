@@ -37,30 +37,30 @@ function PlacesToVisit({ trip }) {
 
   return (
     <div>
-      <h2 className="font-bold text-2xl my-5 mt-20 text-center text-orange-600">
+      <h2 className="font-bold text-xl sm:text-2xl md:text-3xl my-5 mt-20 text-center text-orange-600">
         Places To Visit 🛩️
       </h2>
       <div className="space-y-8">
         {trip?.tripData?.itinerary.map((item, dayIndex) => (
           <div
             key={dayIndex}
-            className=" bg-orange-200 p-5 rounded-lg shadow-md border border-gray-200"
+            className="bg-gradient-to-r from-orange-400 to-orange-500 p-6 rounded-lg shadow-lg border border-gray-200"
           >
             {/* Day Heading */}
-            <h3 className="text-lg font-extrabold text-gray-700 mb-4">
+            <h3 className="text-lg font-bold text-white mb-4">
               Day {item?.day} : {item?.day_title} 🌟
             </h3>
             <div className="space-y-6">
               {item.places.map((place, placeIndex) => (
                 <div
                   key={placeIndex}
-                  className="flex gap-5 p-4 bg-white rounded-md shadow hover:shadow-lg transition-all border border-gray-100"
+                  className="flex flex-col sm:flex-row gap-5 p-4 bg-white rounded-lg shadow hover:shadow-xl transition-all border border-gray-200"
                 >
                   <div>
                     <img
-                      src={photoURLs[place.place_name] || "/plane.jpg"} // Access photo URL correctly
+                      src={photoURLs[place.place_name] || "/plane.jpg"} // Fallback image if photo URL is not available
                       alt={place.place_name}
-                      className="w-72 h-60 object-cover rounded-md"
+                      className="w-72 h-60 object-cover rounded-lg"
                     />
                   </div>
                   <div className="flex flex-col justify-center w-full">
@@ -69,25 +69,35 @@ function PlacesToVisit({ trip }) {
                       {place.place_name}
                     </h4>
                     {/* Place Details */}
-                    <p className="text-sm text-gray-600 mb-1">
-                      <span className="font-semibold">Description:</span>{" "}
+                    <p className="text-sm mb-1">
+                      <span className="font-semibold text-gray-700">
+                        Description:
+                      </span>{" "}
                       {place.place_description}
                     </p>
-                    <p className="text-sm text-gray-600 mb-1">
-                      <span className="font-semibold">Ticket Pricing:</span>{" "}
+                    <p className="text-sm mb-1">
+                      <span className="font-semibold text-gray-700">
+                        Ticket Pricing:
+                      </span>{" "}
                       {place.ticket_pricing}
                     </p>
-                    <p className="text-sm text-gray-600 mb-1">
-                      <span className="font-semibold">Best Time to Visit:</span>{" "}
+                    <p className="text-sm mb-1">
+                      <span className="font-semibold text-gray-700">
+                        Best Time to Visit:
+                      </span>{" "}
                       {place.best_time_to_visit}
                     </p>
-                    <p className="text-sm text-gray-600 mb-1">
-                      <span className="font-semibold">Travel Time:</span>{" "}
+                    <p className="text-sm mb-1">
+                      <span className="font-semibold text-gray-700">
+                        Travel Time:
+                      </span>{" "}
                       {place.estimated_travel_time}
                     </p>
-                    <p className="text-sm text-gray-600">
-                      <span className="font-semibold">Rating:</span> ⭐{" "}
-                      {place.rating}
+                    <p className="text-sm">
+                      <span className="font-semibold text-gray-700">
+                        Rating:
+                      </span>{" "}
+                      ⭐ {place.rating}
                     </p>
                   </div>
                 </div>
