@@ -147,7 +147,7 @@ function CreateTrip() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center px-5">
+    <div className="min-h-screen flex flex-col items-center px-5 ">
       <div className="flex flex-col justify-center items-start sm:px-5 md:px-10 lg:px-32 xl:px-56 mt-10 gap-10">
         {/* Header Section */}
         <div>

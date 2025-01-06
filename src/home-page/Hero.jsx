@@ -1,17 +1,22 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
 import { Link } from "react-router-dom";
+import GradualSpacing from "@/components/ui/gradual-spacing";
 
 function Hero() {
   return (
     <div className="h-[90vh] flex flex-col justify-center items-center px-4 md:px-10 ">
       <div className="flex flex-col justify-center items-center gap-10 md:gap-10 my-10 md:my-10">
-        <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-center sm:leading-15 md:leading-15 lg:leading-snug bg-gradient-to-r from-orange-600 via-red-500 to-yellow-500 bg-clip-text text-transparent">
-          Discover Your Next Adventure with AI:{" "}
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-center sm:leading-15 md:leading-15 lg:leading-snug">
+          <GradualSpacing
+            className="font-display text-3xl md:text-5xl lg:text-6xl font-extrabold text-center sm:leading-15 md:leading-15 lg:leading-snug bg-gradient-to-r from-orange-600 via-red-500 to-yellow-500 bg-clip-text text-transparent block"
+            text="Discover Your Next Adventure with AI:"
+          />
           <span className="text-black">
             Personalized Itineraries at Your Fingertips
           </span>
         </h1>
+
         <p className="text-sm font-bold md:text-lg lg:text-xl text-gray-500 text-center">
           Your personal trip planner and travel curator, creating custom
           itineraries tailored to your interests and budget.
