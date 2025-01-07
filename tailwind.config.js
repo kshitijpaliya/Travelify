@@ -4,6 +4,15 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
   theme: {
     extend: {
+      animation: {
+        slideIn: "slideIn 1.5s ease-out forwards", // Define the animation duration and easing
+      },
+      keyframes: {
+        slideIn: {
+          "0%": { transform: "translateX(-100%)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
