@@ -9,7 +9,7 @@ import PlacesToVisit from "../components/PlacesToVisit";
 
 function ViewTrip() {
   const { tripId } = useParams();
-  const [trip, setTrip] = useState([]);
+  const [trip, setTrip] = useState({});
   console.log(tripId);
 
   useEffect(() => {
