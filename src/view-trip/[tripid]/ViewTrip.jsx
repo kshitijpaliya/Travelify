@@ -9,7 +9,7 @@ import PlacesToVisit from "../components/PlacesToVisit";
 
 function ViewTrip() {
   const { tripId } = useParams();
-  const [trip, setTrip] = useState({});
+  const [trip, setTrip] = useState(null);
   console.log(tripId);
 
   useEffect(() => {
@@ -32,9 +32,13 @@ function ViewTrip() {
   return (
     <div className="p-10 md:px-20 lg:px-44 xl:56 min-h-screen">
       {/* Information Section  */}
-      <InfoSection trip={trip} />
-      <Hotels trip={trip} />
-      <PlacesToVisit trip={trip} />
+        {trip && (
+          <>
+            <InfoSection trip={trip} />
+            <Hotels trip={trip} />
+            <PlacesToVisit trip={trip} />
+          </>
+        )}
     </div>
   );
 }
